@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://<Username>:<Password>@cluster0-fzcwc.mongodb.net/test?retryWrites=true&w=majority"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb+srv://ashishprasad2163:05222412532@cluster0-fzcwc.mongodb.net/test?retryWrites=true&w=majority"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -25,7 +25,7 @@ func main() {
 
 	DockDatabase := client.Database("Dock")
 	podcastCollection := DockDatabase.Collection("podcast")
-	//episodeCollection := DockDatabase.Collection("episode")
+	episodeCollection := DockDatabase.Collection("episode")
 	/*podcastResult, err := podcastCollection.InsertOne(ctx, bson.D{
 		{Key: "Title", Value: "Ashiqui"},
 		{Key: "Author", Value: "Arijit"},
@@ -70,7 +70,7 @@ func main() {
 		fmt.Println(episode)
 	}*/
 
-	/*//retreive single document
+	//retreive single document
 	var podcast bson.M
 	if err = podcastCollection.FindOne(ctx, bson.M{}).Decode(&podcast); err != nil {
 		log.Fatal(err)
@@ -97,7 +97,7 @@ func main() {
 	if err = sortCursor.All(ctx, &episodesSorted); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(episodesSorted)*/
+	fmt.Println(episodesSorted)
 
 	/*//update db with set Id of one document
 
@@ -138,12 +138,12 @@ func main() {
 	fmt.Println("Replaced the docs", result.ModifiedCount)*/
 
 	//delete
-	result, err := podcastCollection.DeleteOne(
+	/*result, err := podcastCollection.DeleteOne(
 		ctx, bson.M{"Title": "Ashiqui 2"},
 	)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Deleted the docs", result.DeletedCount)
+	fmt.Println("Deleted the docs", result.DeletedCount)*/
 
 }
